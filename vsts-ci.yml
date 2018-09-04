@@ -3,7 +3,7 @@ variables:
   dockerId: myPrivateReg
 
 steps:
-- script: |
+- powershell: |
     docker build -t $(dockerId).azurecr.io/company-api:%BUILD_BUILDID% .
     docker login -u $(dockerId) -p $env:PSWD $(dockerid).azurecr.io
     docker push $(dockerId).azurecr.io/company-api:%BUILD_BUILDID%
@@ -14,4 +14,4 @@ steps:
     pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
     artifactName: 'kc-company-api' 
     publishLocation: 'filePath' 
-    targetPath: '$(Build.SourcesDirectory)/kubernetes/*' # Required when publishLocation == FilePath
+    targetPath: '$(Build.SourcesDirectory)/kubernetes/*'
