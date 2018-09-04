@@ -13,5 +13,5 @@ steps:
   inputs:
     pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
     artifactName: 'kc-company-api' 
-    #publishLocation: 'Container' # Options: container, filePath
-    #targetPath: # Required when publishLocation == FilePath
+    publishLocation: 'filePath' 
+    targetPath: '$(Build.SourcesDirectory)/kubernetes/*' # Required when publishLocation == FilePath
