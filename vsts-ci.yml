@@ -9,3 +9,9 @@ steps:
     docker push $(dockerId).azurecr.io/company-api:$BUILD_BUILDID
   env:
     pswd: $(dockerPassword)
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
+    artifactName: 'kc-company-api' 
+    #publishLocation: 'Container' # Options: container, filePath
+    #targetPath: # Required when publishLocation == FilePath
