@@ -1,17 +1,16 @@
-queue: Hosted VS2017
+queue: Hosted Linux Preview
 variables:
   dockerId: myPrivateReg
 
 steps:
-- powershell: |
-    docker build -t $(dockerId).azurecr.io/company-api:$env:BUILD_BUILDID .
-    docker login -u $(dockerId) -p $env:PSWD $(dockerid).azurecr.io
-    docker push $(dockerId).azurecr.io/company-api:$env:BUILD_BUILDID
+- script: |
+    docker build -t $(dockerId).azurecr.io/company-api:$BUILD_BUILDID .
+    docker login -u $(dockerId) -p $pswd $(dockerid).azurecr.io
+    docker push $(dockerId).azurecr.io/company-api:$BUILD_BUILDID
   env:
     pswd: $(dockerPassword)
 - task: PublishBuildArtifacts@1
   inputs:
     pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
     artifactName: 'kc-company-api' 
-    publishLocation: 'filePath' 
-    targetPath: '$(Build.SourcesDirectory)/kubernetes/*'
+    publishLocation: 'Container' 
