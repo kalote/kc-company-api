@@ -42,7 +42,7 @@ spec:
           value: minikube
         - name: MONGODB_HOST
           value: mongo-0
-        image: myprivatereg.azurecr.io/company-api:#{Release.Artifacts.Backend.BuildId}#
+        image: myprivatereg.azurecr.io/company-api:#{Build.BuildId}#
         imagePullPolicy: IfNotPresent
         name: company-api
         ports:
