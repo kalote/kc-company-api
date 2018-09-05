@@ -40,7 +40,7 @@ docker run -p 27017:27017 --name=mongo mongo:3.6
 Second terminal:
 
 ```bash
-mvn clean package # (this will also build the docker image)
+docker build -t company-api:1.0.0 ../company-api
 docker run -e "SPRING_PROFILES_ACTIVE=docker" -p 8080:8080 --link=mongo -t company-api:1.0.0
 ```
 
