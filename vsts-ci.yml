@@ -11,8 +11,8 @@ steps:
     pswd: $(dockerPassword)
 - task: CopyFiles@2
   inputs:
-    sourceFolder: '$(Build.SourcesDirectory)'
-    contents: '/kubernetes/*'
+    sourceFolder: '$(Build.SourcesDirectory)/kubernetes'
+    contents: '**'
     targetFolder: $(Build.ArtifactStagingDirectory)
 - task: PublishBuildArtifacts@1
   inputs:
