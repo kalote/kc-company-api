@@ -9,12 +9,12 @@ steps:
     docker push $(dockerId).azurecr.io/company-api:$BUILD_BUILDID
   env:
     pswd: $(dockerPassword)
-- task: CopyFiles
+- task: CopyFiles@2
   inputs:
     sourceFolder: '$(Build.SourcesDirectory)'
     contents: '/kubernetes/*'
     targetFolder: $(Build.ArtifactStagingDirectory)
-- task: PublishBuildArtifacts
+- task: PublishBuildArtifacts@1
   inputs:
     pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
     artifactName: '$(Build.BuildId)' 
