@@ -19,7 +19,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/company")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT,
+    RequestMethod.OPTIONS })
 @Api(value = "company", description = "Operations related to company API")
 public class CompanyController {
   @Autowired
